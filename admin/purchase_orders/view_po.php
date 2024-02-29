@@ -76,9 +76,9 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     <div class="d-flex">
                         <div><p><b>FIRMA DE AUTORIZACIÓN:&nbsp&nbsp&nbsp&nbsp</b></p></div><div><p>_____________________</p></div>
                     </div>
-                    <div>
-                        <p style="text-decoration:underline;"><b><?php echo isset($notes) ? $notes : '' ?></b></p>
-                    </div>
+                    <!--<div>-->
+                    <!--    <p style="text-decoration:underline;"><b><?php echo isset($notes) ? $notes : '' ?></b></p>-->
+                    <!--</div>-->
                 </div>
                 <!--<p class="m-0"><b>Proveedores</b></p>-->
                 <?php
@@ -109,7 +109,8 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     </colgroup>
                     <thead>
                     <th class="bg-navy disabled text-light px-1 py-1 text-center"> <div class=" d-flex">
-                        <p  class="m-0"><b>Vendedor: </b> <?php echo $seller_name ?></p>
+                        <p  class="m-0"><b>Vendedor:
+                        <!--</b> <?php echo $seller_name ?></p>-->
                     </div></th>
                     <th class="bg-navy disabled text-light px-1 py-1 text-center">CONDICIONES DE PAGO</th>
                     </thead>

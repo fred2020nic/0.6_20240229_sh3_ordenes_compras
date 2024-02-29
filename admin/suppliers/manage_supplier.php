@@ -91,6 +91,10 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                 <option  value="1" <?php echo (isset($credit) && $credit == '1' && $credit !== '') ? 'selected': '' ?>>Si</option>
             </select>
         </div>
+         <div class="form-group">
+            <label for="contact_pay" class="control-label">Doias Credito</label>
+            <input type="text" name="dias_c" id="dias_c" class="form-control rounded-0" value="<?php echo isset($dias_c) ? $dias_c : "" ?>" required>
+        </div>
     </div>
 </form>
 <script>

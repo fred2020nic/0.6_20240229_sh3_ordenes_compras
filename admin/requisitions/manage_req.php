@@ -110,7 +110,13 @@ $allNames = implode(', ', $supplierNames);
                         <option value="0" <?php echo (isset($credit_status) && $credit_status == '0' && $credit_status !== '') ? 'selected' : '' ?>>No</option>
                         <option  value="1" <?php echo (isset($credit_status) && $credit_status == '1' && $credit_status !== '') ? 'selected' : '' ?>>Si</option>
                     </select>
+                   
+                    
                 </div>
+                 <label for="credit_status" class="control-label">Dias Credito</label>
+                <input type="text" class="col-2 form-control form-control-sm rounded-0" id="dias_c" name="dias_c" value="<?php echo isset($dias_c) ? $dias_c : '' ?>">
+                </div>
+                
                 <div class="col-md-4 form-group">
                     <label for="counted">Contado <span class="po_err_msg text-danger"></span></label>
                     <input type="text" class="form-control form-control-sm rounded-0" id="counted" name="counted" value="<?php echo isset($counted) ? $counted : '' ?>">

@@ -102,9 +102,9 @@
                 </table>
             </div>
         </div>
-        <div class="card-tools">
-            <a href="javascript:void(0)" id="create_postal_code" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Crear Nuevo Código Postal</a>
-        </div>
+        <!--<div class="card-tools">-->
+        <!--    <a href="javascript:void(0)" id="create_postal_code" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Crear Nuevo Código Postal</a>-->
+        <!--</div>-->
     </div>
 </div>
 <script>

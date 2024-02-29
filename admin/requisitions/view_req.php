@@ -109,6 +109,10 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     <td class="bg-white text-center" colspan="1">
                         <p><?php echo isset($type_order) ? $type_order : '' ?></p>
                     </td>
+                    <th class="disabled" colspan="1">Dias Credito:</th>
+                    <td class="bg-white text-center" colspan="1">
+                        <p><?php echo isset($dias_c) ? $dias_c : '' ?></p>
+                    </td>
                 </tr>
                 <tr>
                     <th class="disabled" style="width: 25% !important;" colspan="1">N° Cotización:</th>

@@ -21,7 +21,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline">
     <div class="card-header text-center">
-      <a href="./" class="h1"><b>Ingresar 2024</b></a>
+      <a href="./" class="h1"><b>Ingresar</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Pon tus credenciales para acceder al sistema</p>

@@ -150,7 +150,7 @@ $allNames = implode(', ', $supplierNames);
                     <input type="text" class="form-control form-control-sm rounded-0" id="invoice" name="invoice" value="<?php echo isset($invoice) ? $invoice : '' ?>">
                 </div>
                 <div class="col-md-4 form-group">
-                            <label for="seller_name">Vendedor <span class="po_err_msg text-danger"></span></label>
+                            <!--<label for="seller_name">Vendedor <span class="po_err_msg text-danger"></span></label>-->
                             <input type="text" class="form-control form-control-sm rounded-0" id="seller_name" name="seller_name" value="<?php echo isset($seller_name) ? $seller_name : '' ?>">
                         </div>
             </div>
