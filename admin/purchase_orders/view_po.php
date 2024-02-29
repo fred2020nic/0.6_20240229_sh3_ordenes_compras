@@ -52,13 +52,15 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
             <div class="col-6 d-flex align-items-center">
                 <div>
                     <p class="m-0"><?php echo $_settings->info('company_name') ?></p>
+                    <a>Correo</a>
                     <p class="m-0"><?php echo $_settings->info('company_email') ?></p>
+                    <a>Direccion</a>
                     <p class="m-0"><?php echo $_settings->info('company_address') ?></p>
                 </div>
             </div>
             <div class="col-6">
                 <center><img src="<?php echo validate_image($_settings->info('logo')) ?>" alt="" height="200px"></center>
-                <h2 class="text-center"><b>ConfiguroWeb</b></h2>
+                <h2 class="text-center"><b></b></h2>
             </div>
         </div>
         <div class="row mb-2">
@@ -74,7 +76,8 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     </div>
                     
                     <div class="d-flex">
-                        <div><p><b>FIRMA DE AUTORIZACIÓN:&nbsp&nbsp&nbsp&nbsp</b></p></div><div><p>_____________________</p></div>
+                        <!-- <div><p><b>FIRMA DE AUTORIZACIÓN:&nbsp&nbsp&nbsp&nbsp</b></p></div><div><p>_____________________</p></div> -->
+                        <h3>Lic.Laura Alvarez M</h3> 
                     </div>
                     <!--<div>-->
                     <!--    <p style="text-decoration:underline;"><b><?php echo isset($notes) ? $notes : '' ?></b></p>-->
@@ -109,8 +112,8 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     </colgroup>
                     <thead>
                     <th class="bg-navy disabled text-light px-1 py-1 text-center"> <div class=" d-flex">
-                        <p  class="m-0"><b>Vendedor:
-                        <!--</b> <?php echo $seller_name ?></p>-->
+                        <!-- <p  class="m-0"><b>Vendedor:
+                        </b> <?php echo $seller_name ?></p> -->
                     </div></th>
                     <th class="bg-navy disabled text-light px-1 py-1 text-center">CONDICIONES DE PAGO</th>
                     </thead>
@@ -215,7 +218,8 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
                     </div>
                     <div class="col-12 ">
                         <div class="d-flex border align-items-center p-2">
-                            <b>ENVIAR FACTURA AL CORREO:&nbsp&nbsp </b> <p class="mb-0"><?php echo isset($email_client) ? $email_client : '' ?></p>
+                            <b>ENVIAR FACTURA AL CORREO A   : 
+                        <p class="mb-0">   cuentasporpagar@alvartispharma.com.mx  </p> </b>
                         </div>
                     </div>
                 </div>

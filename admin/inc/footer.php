@@ -57,7 +57,7 @@
 </script>
 <footer class="main-footer text-sm">
         <div class="float-right d-none d-sm-inline-block">
-          <b><?php echo $_settings->info('short_name') ?> - Para más desarrollos accede a <a href="https://www.configuroweb.com/desarrollo/" target="blank">ConfiguroWeb</a> )</b>
+          <!-- <b><?php echo $_settings->info('short_name') ?> - Para más desarrollos accede a <a href="https://www.configuroweb.com/desarrollo/" target="blank">ConfiguroWeb</a> )</b> -->
         </div>
       </footer>
     </div>
