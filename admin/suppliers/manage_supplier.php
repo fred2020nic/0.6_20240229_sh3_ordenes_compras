@@ -72,10 +72,12 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
             <label for="contact_invoice" class="control-label">Contacto facturación</label>
             <input type="text" name="contact_invoice" id="contact_invoice" class="form-control rounded-0" value="<?php echo isset($contact_invoice) ? $contact_invoice : "" ?>" required>
         </div>
-        <!-- <div class="form-group">
+
+        <div class="form-group">
             <label for="contact_pay" class="control-label">Contacto pago</label>
             <input type="text" name="contact_pay" id="contact_pay" class="form-control rounded-0" value="<?php echo isset($contact_pay) ? $contact_pay : "" ?>" required>
-        </div> -->
+        </div> 
+        
         <div class="form-group">
             <label for="discount" class="control-label">Descuento (%)</label>
             <input type="text" name="discount" id="discount" class="form-control rounded-0" value="<?php echo isset($discount) ? $discount : "" ?>" required>
@@ -97,6 +99,83 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
             <input type="text" name="dias_c" id="dias_c" class="form-control rounded-0" value="<?php echo isset($dias_c) ? $dias_c : "" ?>" required>
         </div>
     </div>
+    <div class="form-group">
+            <label for="type_mon" class="control-label">Moneda</label>
+            <select name="type_mon" id="type_mon" class="form-control rounded-0" required>
+                <option value="Euro">Euro</option>
+                <option value="Pesos Mexicanos">Peso Mexicano</option>
+                <option value="Dolar">Dolar</option>
+                
+            </select>
+        </div>
+    <br>
+    <hr>
+    <h5 class="pl-2">Datos Bancarios: </h5>
+                        <div class="col-md-12">
+                            <table class="table table-striped table-bordered" id="item-list2">
+                                <tr >
+                                    <th class="bg-navy disabled">Forma de pago:</th>
+                                    <td>
+                                        <input type="text" step="any" name="way_pay" class="text-left w-100" value="<?php echo isset($way_pay) ? $way_pay : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Factura:</th>
+                                    <td>
+                                        <input type="text" step="any" name="client_invoice" class="text-left w-100" value="<?php echo isset($client_invoice) ? $client_invoice : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Nombre:</th>
+                                    <td>
+                                        <input type="text" step="any" name="client_name" class="text-left w-100" value="<?php echo isset($client_name) ? $client_name : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Banco:</th>
+                                    <td>
+                                        <input type="text" step="any" name="bank" class="text-left w-100" value="<?php echo isset($bank) ? $bank : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Clave:</th>
+                                    <td>
+                                        <input type="text" step="any" name="client_key" class="text-left w-100" value="<?php echo isset($client_key) ? $client_key : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">N° cuenta:</th>
+                                    <td>
+                                        <input type="text" step="any" name="client_account_num" class="text-left w-100" value="<?php echo isset($client_account_num) ? $client_account_num : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">N° Tarjeta:</th>
+                                    <td>
+                                        <input type="text" step="any" name="client_card_num" class="text-left w-100" value="<?php echo isset($client_card_num) ? $client_card_num : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Sucursal:</th>
+                                    <td>
+                                        <input type="text" step="any" name="branch_office" class="text-left w-100" value="<?php echo isset($branch_office) ? $branch_office : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Numero de contácto:</th>
+                                    <td>
+                                        <input type="text" step="any" name="contact_client" class="text-left w-100" value="<?php echo isset($contact_client) ? $contact_client : '' ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-navy disabled">Correo electrónico:</th>
+                                    <td>
+                                        <input type="text" step="any" name="email_client" class="text-left w-100" value="<?php echo isset($email_client) ? $email_client : '' ?>">
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
 </form>
 <script>
     $(function () {

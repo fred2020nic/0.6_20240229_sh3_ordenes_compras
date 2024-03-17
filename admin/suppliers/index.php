@@ -17,7 +17,7 @@
                     <colgroup>
                         <col width="5%">
                         <col width="10%">
-                        <col width="20%">
+                        <!-- <col width="20%"> -->
                         <col width="10%">
                         <col width="10%">
                         <col width="10%">
@@ -27,7 +27,7 @@
                         <tr class="bg-navy disabled">
                             <th>Nombre comercial</th>
                             <th>Razón social RFC</th>
-                            <th>Datos ubicación</th>
+                            <!-- <th>Datos ubicación</th> -->
                             <th>Contacto venta</th>
                             <th>Contacto facturación</th>
                             <th>Contacto pago</th>
@@ -43,13 +43,13 @@
                             <tr>
                                 <td><?php echo $row['name'] ?></td>
                                 <td><?php echo $row['business_name'] ?></td>
-                                <td>
+                                <!-- <td>
                                     <p class="m-0">
                                         <b>Colonia:</b> <?php echo $row['suburb'] ?>,<br>
                                         <b>Alcaldía:</b> <?php echo $row['town_hall'] ?>,<br>
                                         <b>Cod. postal:</b> <?php echo $row['postal_code'] ?><br>
                                     </p>
-                                </td>
+                                </td> -->
                                 <td>
                                     <?php
                                         $text = $row['contact_sold'];

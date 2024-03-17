@@ -35,12 +35,14 @@ $allNames = implode(', ', $supplierNames);
 ?>
 <style>
     .add_pdf {
-  background: #007bff;
-  border: none;
-  color: #fff;
-  padding: 5px 23px;
-}
-    .item-supplier, .item_req_no {
+        background: #007bff;
+        border: none;
+        color: #fff;
+        padding: 5px 23px;
+    }
+
+    .item-supplier,
+    .item_req_no {
         width: 100%;
         height: 37px;
         background: #e9ecef;
@@ -50,6 +52,7 @@ $allNames = implode(', ', $supplierNames);
         align-items: center;
         padding-left: 10px;
     }
+
     span.select2-selection.select2-selection--single {
         border-radius: 0;
         padding: 0.25rem 0.5rem;
@@ -59,6 +62,7 @@ $allNames = implode(', ', $supplierNames);
         padding-left: 0.5rem;
         height: auto;
     }
+
     /* Chrome, Safari, Edge, Opera */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -70,8 +74,10 @@ $allNames = implode(', ', $supplierNames);
     input[type=number] {
         -moz-appearance: textfield;
     }
-    [name="isr_percentage"],[name="iva_percentage"]{
-        width:5vw;
+
+    [name="isr_percentage"],
+    [name="iva_percentage"] {
+        width: 5vw;
     }
 </style>
 <div class="card card-outline card-info">
@@ -80,7 +86,7 @@ $allNames = implode(', ', $supplierNames);
     </div>
     <div class="card-body">
         <form action="" id="po-form">
-            <input type="hidden" name ="id" value="<?php echo isset($id) ? $id : '' ?>">
+            <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
             <div class="row">
                 <div class="col-md-4 form-group">
                     <label for="supplier_id">Fecha creación</label><br>
@@ -108,35 +114,55 @@ $allNames = implode(', ', $supplierNames);
                     <label for="credit_status" class="control-label">Credito</label>
                     <select name="credit_status" id="credit_status" class="form-control rounded-0" required>
                         <option value="0" <?php echo (isset($credit_status) && $credit_status == '0' && $credit_status !== '') ? 'selected' : '' ?>>No</option>
-                        <option  value="1" <?php echo (isset($credit_status) && $credit_status == '1' && $credit_status !== '') ? 'selected' : '' ?>>Si</option>
+                        <option value="1" <?php echo (isset($credit_status) && $credit_status == '1' && $credit_status !== '') ? 'selected' : '' ?>>Si</option>
                     </select>
-                   
-                    
+
+
                 </div>
-                 <label for="credit_status" class="control-label">Dias Credito</label>
-                <input type="text" class="col-2 form-control form-control-sm rounded-0" id="dias_c" name="dias_c" value="<?php echo isset($dias_c) ? $dias_c : '' ?>">
+                <div class="col-md-4 form-group">
+                    <label for="credit_status" class="control-label">Dias Credito</label>
+                    <input type="text" class="col-12 form-control form-control-sm rounded-0" id="dias_c" name="dias_c" value="<?php echo isset($dias_c) ? $dias_c : '' ?>">
                 </div>
-                
+
                 <div class="col-md-4 form-group">
                     <label for="counted">Contado <span class="po_err_msg text-danger"></span></label>
                     <input type="text" class="form-control form-control-sm rounded-0" id="counted" name="counted" value="<?php echo isset($counted) ? $counted : '' ?>">
                 </div>
-                <div class="col-md-4 form-group">
+                <!-- <div class="col-md-4 form-group">
                     <label for="way_pay">Tipo de pedido <span class="po_err_msg text-danger"></span></label>
                     <input type="text" class="form-control form-control-sm rounded-0" id="type_order" name="type_order" value="<?php echo isset($type_order) ? $type_order : '' ?>">
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
+                    <label for="type_mon" class="control-label">Moneda</label>
+                    <select name="type_mon" id="type_mon" class="form-control rounded-0" required>
+                        <option value="Euro">Euro</option>
+                        <option value="Pesos Mexicanos">Peso Mexicano</option>
+                        <option value="Dolar">Dolar</option>
+
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="credit_status" class="control-label">Descuento</label>
+                    <input type="text" class="col-12 form-control form-control-sm rounded-0" id="descu" name="descu" value="<?php echo isset($descu) ? $descu : '' ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
                     <label for="po_no">N° Cotización<span class="po_err_msg text-danger"></span></label>
                     <div class="item_req_no">
                         <input type="hidden" class="form-control form-control-sm rounded-0" id="pr_no" name="pr_no" value="<?php echo isset($pr_no) ? $pr_no : $req_no ?>">
                         <?php echo isset($pr_no) ? $pr_no : $req_no ?>
                     </div>
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-4 form-group">
                     <label for="po_no"> Folio<span class="po_err_msg text-danger"></span></label>
                     <input type="text" class="form-control form-control-sm rounded-0" id="invoice" name="invoice" value="<?php echo isset($invoice) ? $invoice : '' ?>">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="credit_status" class="control-label">Condiciones de pago</label>
+                    <input type="text" class="col-12 form-control form-control-sm rounded-0" id="condi_p" name="condi_p" value="<?php echo isset($condi_p) ? $condi_p : '' ?>">
                 </div>
             </div>
             <div class="row">
@@ -165,35 +191,36 @@ $allNames = implode(', ', $supplierNames);
                         <tbody>
                             <?php
                             $i = 1;
-                            if (isset($id)):
+                            if (isset($id)) :
                                 $order_items_qry = $conn->query("SELECT r.*,i.product_key, i.description, i.unit, s.name, i.supplier_id FROM `req_items` r inner join item_list i on r.item_id = i.id LEFT JOIN supplier_list s ON s.id = r.supplier_id where r.`req_id` = '$id' ");
                                 echo $conn->error;
-                                while ($row = $order_items_qry->fetch_assoc()):
-                                    ?>
+                                while ($row = $order_items_qry->fetch_assoc()) :
+                            ?>
                                     <tr class="po-item" data-id="" data-supplier='<?= $row['name'] ?>'>
-                                <input type="hidden" name="supplier_id[]" value="<?php echo $row['supplier_id'] ?>">
-                                <td class="align-middle p-1 text-center">
-                                    <button class="btn btn-sm btn-danger py-0" type="button"><i class="fa fa-times"></i></button>
-                                </td>
-                                <td class=" sequential-number align-middle p-1 text-center"> <?php echo $i++ ?></td>
-                                <td class="align-middle p-0 text-center">
-                                    <input type="number" class="text-center w-100 border-0" step="any" name="qty[]" value="<?php echo $row['quantity'] ?>"/>
-                                </td>
-                                <td class="align-middle p-1 ">
-                                    <input type="text" class="text-center  w-100 border-0" step="any" name="item-unit[]" value="<?php echo $row['unit'] ?>"/></td>
-                                <td class="align-middle p-1">
-                                    <input type="hidden" name="item_id[]" value="<?php echo $row['item_id'] ?>">
-                                    <input type="text" class="text-center w-100 border-0 item_id" value="<?php echo $row['product_key'] ?>" required/>
-                                </td>
-                                <td class="align-middle p-1">
-                                    <input type="number" step="any" class="text-right w-100 border-0" name="unit_price[]"  value="<?php echo ($row['unit_price']) ?>"/>
-                                </td>
-                                <td class="align-middle p-1 text-right total-price"><?php echo number_format($row['quantity'] * $row['unit_price']) ?></td>
-                                </tr>
-                                <?php
-                            endwhile;
-                        endif;
-                        ?>
+                                        <input type="hidden" name="supplier_id[]" value="<?php echo $row['supplier_id'] ?>">
+                                        <td class="align-middle p-1 text-center">
+                                            <button class="btn btn-sm btn-danger py-0" type="button"><i class="fa fa-times"></i></button>
+                                        </td>
+                                        <td class=" sequential-number align-middle p-1 text-center"> <?php echo $i++ ?></td>
+                                        <td class="align-middle p-0 text-center">
+                                            <input type="number" class="text-center w-100 border-0" step="any" name="qty[]" value="<?php echo $row['quantity'] ?>" />
+                                        </td>
+                                        <td class="align-middle p-1 ">
+                                            <input type="text" class="text-center  w-100 border-0" step="any" name="item-unit[]" value="<?php echo $row['unit'] ?>" />
+                                        </td>
+                                        <td class="align-middle p-1">
+                                            <input type="hidden" name="item_id[]" value="<?php echo $row['item_id'] ?>">
+                                            <input type="text" class="text-center w-100 border-0 item_id" value="<?php echo $row['product_key'] ?>" required />
+                                        </td>
+                                        <td class="align-middle p-1">
+                                            <input type="number" step="any" class="text-right w-100 border-0" name="unit_price[]" value="<?php echo ($row['unit_price']) ?>" />
+                                        </td>
+                                        <td class="align-middle p-1 text-right total-price"><?php echo number_format($row['quantity'] * $row['unit_price']) ?></td>
+                                    </tr>
+                            <?php
+                                endwhile;
+                            endif;
+                            ?>
                         </tbody>
                         <tfoot>
                             <tr class="bg-lightblue">
@@ -230,7 +257,7 @@ $allNames = implode(', ', $supplierNames);
                         <h5 class="pl-2">Datos Bancarios: </h5>
                         <div class="col-md-12">
                             <table class="table table-striped table-bordered" id="item-list2">
-                                <tr >
+                                <tr>
                                     <th class="bg-navy disabled">Forma de pago:</th>
                                     <td>
                                         <input type="text" step="any" name="way_pay" class="text-left w-100" value="<?php echo isset($way_pay) ? $way_pay : '' ?>">
@@ -304,18 +331,18 @@ $allNames = implode(', ', $supplierNames);
                                         }
                                     }
                                     ?>
-                                <input type="file" id="pdfInput" accept=".pdf" multiple>
-                                <button type="button" class="add_pdf" onclick="addPDFs()">Añadir PDFs</button>
-                                <ul id="pdfList">
-                                    <?php if (!empty($pdfs)): ?>
-                                        <?php foreach ($pdfs as $pdf): ?>
-                                            <li>
-                                                <a href="<?php echo base_url . "uploads/pdfs/" . $pdf; ?>" target="_blank"><?php echo $pdf; ?></a>
-                                                <button class="btn-danger" onclick="deletePDF('<?php echo $pdf; ?>')">Eliminar</button>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </ul>
+                                    <input type="file" id="pdfInput" accept=".pdf" multiple>
+                                    <button type="button" class="add_pdf" onclick="addPDFs()">Añadir PDFs</button>
+                                    <ul id="pdfList">
+                                        <?php if (!empty($pdfs)) : ?>
+                                            <?php foreach ($pdfs as $pdf) : ?>
+                                                <li>
+                                                    <a href="<?php echo base_url . "uploads/pdfs/" . $pdf; ?>" target="_blank"><?php echo $pdf; ?></a>
+                                                    <button class="btn-danger" onclick="deletePDF('<?php echo $pdf; ?>')">Eliminar</button>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </ul>
                                 </tr>
                             </table>
                         </div>
@@ -331,28 +358,29 @@ $allNames = implode(', ', $supplierNames);
 </div>
 <table class="d-none" id="item-clone">
     <tr class="po-item" data-id="">
-    <input type="hidden" name="supplier_id[]" value="<?php echo isset($row['supplier_id']) ? $row['supplier_id'] : '' ?>">
-    <td class="align-middle p-1 text-center">
-        <button class="btn btn-sm btn-danger py-0" type="button"><i class="fa fa-times"></i></button>
-    </td>
-    <td class=" sequential-number align-middle p-1 text-center">
+        <input type="hidden" name="supplier_id[]" value="<?php echo isset($row['supplier_id']) ? $row['supplier_id'] : '' ?>">
+        <td class="align-middle p-1 text-center">
+            <button class="btn btn-sm btn-danger py-0" type="button"><i class="fa fa-times"></i></button>
+        </td>
+        <td class=" sequential-number align-middle p-1 text-center">
 
-    </td>
-    <td class="align-middle p-0 text-center">
-        <input type="number" class="text-center w-100 border-0" step="any" name="qty[]"/>
-    </td>
-    <td class="align-middle item-unit p-1">
-        <input type="text" class="text-center w-100 border-0" step="any" name="item-unit[]" value="<?php echo isset($row['unit']) ? $row['unit'] : '' ?>"/></td>
-</td>
-<td class="align-middle p-1">
-    <input type="hidden" name="item_id[]">
-    <input type="text" class="text-center w-100 border-0 item_id" required/>
-</td>
-<td class="align-middle p-1">
-    <input type="number" step="any" class="text-right w-100 border-0" name="unit_price[]" value="0"/>
-</td>
-<td class="align-middle p-1 text-right total-price">0</td>
-</tr>
+        </td>
+        <td class="align-middle p-0 text-center">
+            <input type="number" class="text-center w-100 border-0" step="any" name="qty[]" />
+        </td>
+        <td class="align-middle item-unit p-1">
+            <input type="text" class="text-center w-100 border-0" step="any" name="item-unit[]" value="<?php echo isset($row['unit']) ? $row['unit'] : '' ?>" />
+        </td>
+        </td>
+        <td class="align-middle p-1">
+            <input type="hidden" name="item_id[]">
+            <input type="text" class="text-center w-100 border-0 item_id" required />
+        </td>
+        <td class="align-middle p-1">
+            <input type="number" step="any" class="text-right w-100 border-0" name="unit_price[]" value="0" />
+        </td>
+        <td class="align-middle p-1 text-right total-price">0</td>
+    </tr>
 </table>
 <script>
     let accumulatedFiles = [];
@@ -374,7 +402,7 @@ $allNames = implode(', ', $supplierNames);
                 deleteBtn.textContent = ' X';
                 deleteBtn.style.color = 'red';
                 deleteBtn.style.cursor = 'pointer';
-                deleteBtn.onclick = function () {
+                deleteBtn.onclick = function() {
                     pdfList.removeChild(li);
                     accumulatedFiles = accumulatedFiles.filter(f => f.name !== file.name);
                     logFiles();
@@ -393,7 +421,7 @@ $allNames = implode(', ', $supplierNames);
         _this.closest('tr').remove();
 
         var hasOtherRowsWithSameSupplier = false;
-        $('#item-list tr').each(function () {
+        $('#item-list tr').each(function() {
             if ($(this).data('supplier') === supplierToRemove) {
                 hasOtherRowsWithSameSupplier = true;
                 return false;
@@ -412,18 +440,20 @@ $allNames = implode(', ', $supplierNames);
         var table = $('#item-list');
         updateSequentialNumbers(table);
     }
-    $(document).on('click', '.btn-danger', function () {
+    $(document).on('click', '.btn-danger', function() {
         rem_item($(this));
     });
+
     function updateSequentialNumbers(table) {
         // Renumerar los elementos con clase 'sequential-number' después de eliminar una fila
-        $(table).find('.sequential-number').each(function (index, element) {
+        $(table).find('.sequential-number').each(function(index, element) {
             $(element).text(index + 1);
         });
     }
+
     function calculate() {
         var _total = 0
-        $('.po-item').each(function () {
+        $('.po-item').each(function() {
             var qty = $(this).find("[name='qty[]']").val()
             var unit_price = $(this).find("[name='unit_price[]']").val()
             var row_total = 0;
@@ -432,7 +462,7 @@ $allNames = implode(', ', $supplierNames);
             }
             $(this).find('.total-price').text(parseFloat(row_total).toLocaleString('en-US'))
         })
-        $('.total-price').each(function () {
+        $('.total-price').each(function() {
             var _price = $(this).text()
             _price = _price.replace(/\,/gi, '')
             _total += parseFloat(_price)
@@ -455,21 +485,23 @@ $allNames = implode(', ', $supplierNames);
 
     function _autocomplete(_item) {
         _item.find('.item_id').autocomplete({
-            source: function (request, response) {
+            source: function(request, response) {
                 $.ajax({
                     url: _base_url_ + "classes/Master.php?f=search_items",
                     method: 'POST',
-                    data: {q: request.term},
+                    data: {
+                        q: request.term
+                    },
                     dataType: 'json',
                     error: err => {
                         console.log(err)
                     },
-                    success: function (resp) {
+                    success: function(resp) {
                         response(resp)
                     }
                 })
             },
-            select: function (event, ui) {
+            select: function(event, ui) {
                 console.log(ui)
 
                 _item.find('input[name="item_id[]"]').val(ui.item.item_id);
@@ -480,7 +512,7 @@ $allNames = implode(', ', $supplierNames);
                 var currentSuppliers = $('#supplier_content .item-supplier').text().split(', ').filter(Boolean); // filter(Boolean) para eliminar valores vacíos
                 // Verifica si el proveedor seleccionado ya está en la lista
                 if (!currentSuppliers.includes(ui.item.supplier)) {
-                    
+
                     // Si no está en la lista, añádelo
                     currentSuppliers.push(ui.item.supplier);
                     $('#supplier_content .item-supplier').text(currentSuppliers.join(', '));
@@ -489,43 +521,44 @@ $allNames = implode(', ', $supplierNames);
             }
         })
     }
+
     function addValueToInput(selector, valueToAdd) {
-    // 1. Obtén el valor actual del input.
-    let currentValue = parseFloat($(selector).val()) || 0; // Si el valor no es un número, se usará 0
+        // 1. Obtén el valor actual del input.
+        let currentValue = parseFloat($(selector).val()) || 0; // Si el valor no es un número, se usará 0
 
-    // 2. Suma el nuevo valor al valor actual.
-    let newValue = currentValue + valueToAdd;
+        // 2. Suma el nuevo valor al valor actual.
+        let newValue = currentValue + valueToAdd;
 
-    // 3. Establece el nuevo valor en el input.
-    $(selector).val(newValue);
-}
-    $(document).ready(function () {
+        // 3. Establece el nuevo valor en el input.
+        $(selector).val(newValue);
+    }
+    $(document).ready(function() {
 
         var counter = 1;
-        $('#add_row').click(function () {
+        $('#add_row').click(function() {
             var tr = $('#item-clone tr').clone()
             var sup = $('#supplier_content div')
             $('#item-list tbody').append(tr)
             _autocomplete(tr);
             _autocomplete(sup);
-            tr.find('[name="qty[]"],[name="unit_price[]"]').on('input keypress', function (e) {
+            tr.find('[name="qty[]"],[name="unit_price[]"]').on('input keypress', function(e) {
                 calculate()
             })
             var table = $('#item-list');
             updateSequentialNumbers(table);
-            $('#item-list tfoot').find('[name="iva_percentage"],[name="isr_percentage"]').on('input keypress', function (e) {
+            $('#item-list tfoot').find('[name="iva_percentage"],[name="isr_percentage"]').on('input keypress', function(e) {
                 calculate()
             })
         })
 
         if ($('#item-list .po-item').length > 0) {
-            $('#item-list .po-item').each(function () {
+            $('#item-list .po-item').each(function() {
                 var tr = $(this)
                 _autocomplete(tr)
-                tr.find('[name="qty[]"],[name="unit_price[]"]').on('input keypress', function (e) {
+                tr.find('[name="qty[]"],[name="unit_price[]"]').on('input keypress', function(e) {
                     calculate()
                 })
-                $('#item-list tfoot').find('[name="iva_percentage"],[name="isr_percentage"]').on('input keypress', function (e) {
+                $('#item-list tfoot').find('[name="iva_percentage"],[name="isr_percentage"]').on('input keypress', function(e) {
                     calculate()
                 })
                 tr.find('[name="qty[]"],[name="unit_price[]"]').trigger('keypress')
@@ -533,8 +566,11 @@ $allNames = implode(', ', $supplierNames);
         } else {
             $('#add_row').trigger('click')
         }
-        $('.select2').select2({placeholder: "Porfavor selecciona aquí", width: "relative"})
-        $('#po-form').submit(function (e) {
+        $('.select2').select2({
+            placeholder: "Porfavor selecciona aquí",
+            width: "relative"
+        })
+        $('#po-form').submit(function(e) {
             e.preventDefault();
             console.log(new FormData($(this)[0]));
             var _this = $(this)
@@ -559,10 +595,10 @@ $allNames = implode(', ', $supplierNames);
                     alert_toast("Ocurrió un error", 'error');
                     end_loader();
                 },
-                success: function (resp) {
+                success: function(resp) {
                     if (typeof resp == 'object' && resp.status == 'success') {
                         if (accumulatedFiles.length > 0) {
-                            sendPDFs(resp.id, function (pdfResp) {
+                            sendPDFs(resp.id, function(pdfResp) {
                                 if (pdfResp && pdfResp.status == 'success') {
                                     location.href = "./?page=requisitions/view_req&id=" + resp.id;
                                 }
@@ -575,7 +611,9 @@ $allNames = implode(', ', $supplierNames);
                         el.addClass("alert alert-danger err-msg").text(resp.msg)
                         _this.prepend(el)
                         el.show('slow')
-                        $("html, body").animate({scrollTop: 0}, "fast");
+                        $("html, body").animate({
+                            scrollTop: 0
+                        }, "fast");
                         end_loader()
                         if (resp.status == 'po_failed') {
                             $('[name="po_no"]').addClass('border-danger').focus()
@@ -595,63 +633,70 @@ $allNames = implode(', ', $supplierNames);
 
 
 
-function sendPDFs(reqId, callback) {
-    if (accumulatedFiles.length === 0) {
-        alert_toast("No hay archivos PDF para enviar.", 'warning');
-        if (callback) callback({ status: 'no_files' });
-        return;
-    }
-
-    const formData = new FormData();
-    accumulatedFiles.forEach((file, index) => {
-        formData.append(`file${index + 1}`, file);
-        formData.append('req_id', reqId);
-    });
-
-    $.ajax({
-        url: _base_url_ + "classes/Master.php?f=save_pdf",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        method: 'POST',
-        type: 'POST',
-        dataType: 'json',
-        error: err => {
-            console.log(err);
-            alert_toast("Ocurrió un error al enviar los PDFs", 'error');
-            end_loader();
-            if (callback) callback({ status: 'error' });
-        },
-        success: function (resp) {
-            if (typeof resp == 'object' && resp.status == 'success') {
-                console.log('lo encontro');
-            } else if (resp.status == 'failed' && !!resp.msg) {
-                alert_toast(resp.msg, 'error');
-            } else {
-                alert_toast("Ocurrió un error inesperado.", 'error');
-                console.log(resp);
-            }
-            end_loader();
-            if (callback) callback(resp);
+    function sendPDFs(reqId, callback) {
+        if (accumulatedFiles.length === 0) {
+            alert_toast("No hay archivos PDF para enviar.", 'warning');
+            if (callback) callback({
+                status: 'no_files'
+            });
+            return;
         }
-    });
-}
+
+        const formData = new FormData();
+        accumulatedFiles.forEach((file, index) => {
+            formData.append(`file${index + 1}`, file);
+            formData.append('req_id', reqId);
+        });
+
+        $.ajax({
+            url: _base_url_ + "classes/Master.php?f=save_pdf",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            type: 'POST',
+            dataType: 'json',
+            error: err => {
+                console.log(err);
+                alert_toast("Ocurrió un error al enviar los PDFs", 'error');
+                end_loader();
+                if (callback) callback({
+                    status: 'error'
+                });
+            },
+            success: function(resp) {
+                if (typeof resp == 'object' && resp.status == 'success') {
+                    console.log('lo encontro');
+                } else if (resp.status == 'failed' && !!resp.msg) {
+                    alert_toast(resp.msg, 'error');
+                } else {
+                    alert_toast("Ocurrió un error inesperado.", 'error');
+                    console.log(resp);
+                }
+                end_loader();
+                if (callback) callback(resp);
+            }
+        });
+    }
 
     function deletePDF(pdfName) {
         $.ajax({
             url: _base_url_ + "classes/Master.php?f=delete_pdf",
-            data: {pdf: pdfName, req_id: '<?php echo isset($_GET['id']) ? $_GET['id'] : ""; ?>'},
+            data: {
+                pdf: pdfName,
+                req_id: '<?php echo isset($_GET['id']) ? $_GET['id'] : ""; ?>'
+            },
             method: 'POST',
             dataType: 'json',
             error: err => {
                 console.log(err);
                 alert_toast("Ocurrió un error", 'error');
             },
-            success: function (resp) {
+            success: function(resp) {
                 if (typeof resp == 'object' && resp.status == 'success') {
                     alert_toast("PDF eliminado con éxito", 'success');
-                    location.reload();  // Recargar la página para reflejar la eliminación
+                    location.reload(); // Recargar la página para reflejar la eliminación
                 } else if (resp.status == 'failed' && !!resp.msg) {
                     alert_toast(resp.msg, 'error');
                 } else {
@@ -661,6 +706,4 @@ function sendPDFs(reqId, callback) {
             }
         });
     }
-
-
 </script>
